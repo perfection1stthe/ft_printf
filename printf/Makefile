@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mtraball <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/20 18:29:42 by mtraball	       #+#    #+#              #
-#    Updated: 2021/04/19 18:29:45 by mtraball	      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	= libftprintf.a
 
 CC		= gcc
@@ -24,17 +12,20 @@ OBJS	= ${SRCS:.c=.o}
 
 RM		= rm -f
 
-.c.o:
-		${CC} ${CFLAGS} -I ${LIBRI} -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-		ar rcs ${NAME} ${OBJS}
+		ar -rcs ${NAME} ${OBJS}
 
 all:	${NAME}
+
+.c.o:
+		${CC} ${CFLAGS} -I ${LIBRI} -c $< -o ${<:.c=.o}
 
 clean:
 		${RM} ${OBJS} *.gch
 
 fclean:	clean
 		${RM} ${NAME}
+
+re:	fclean all
 
